@@ -24,7 +24,7 @@
 
 //   /* ---------- LOAD TESTIMONIALS (BACKEND UNTOUCHED) ---------- */
 //   useEffect(() => {
-//     const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+//     const apiBase = import.meta.env.VITE_API_URL || "https://terradinenwine.com/api";
 
 //     const load = async () => {
 //       try {
@@ -246,7 +246,7 @@ const Testimonial = () => {
 
   /* ---------- LOAD DATA (UNCHANGED) ---------- */
   useEffect(() => {
-    const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    const apiBase = import.meta.env.VITE_API_URL || "https://terradinenwine.com/api";
 
     fetch(`${apiBase}/testimonial`)
       .then((r) => r.json())

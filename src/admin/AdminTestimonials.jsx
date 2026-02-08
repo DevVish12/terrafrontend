@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const AdminTestimonials = () => {
-  const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const apiBase = import.meta.env.VITE_API_URL || "https://terradinenwine.com/api";
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");

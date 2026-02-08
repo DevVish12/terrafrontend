@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const AdminHappyCards = () => {
-  const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const apiBase = import.meta.env.VITE_API_URL || "https://terradinenwine.com/api";
   const backendOrigin = apiBase.replace(/\/api$/, "");
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);

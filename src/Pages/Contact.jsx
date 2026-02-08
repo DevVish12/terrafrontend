@@ -33,7 +33,7 @@ const Contact = () => {
     try {
       const res = await fetch(
         `${
-          import.meta.env.VITE_API_URL || "http://localhost:5000/api"
+          import.meta.env.VITE_API_URL || "https://terradinenwine.com/api"
         }/contact`,
         {
           method: "POST",

@@ -16,7 +16,7 @@
 
 //   /* ---------------- LOAD DATA (BACKEND UNTOUCHED) ---------------- */
 //   useEffect(() => {
-//     const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+//     const apiBase = import.meta.env.VITE_API_URL || "https://terradinenwine.com/api";
 //     const backendOrigin = apiBase.replace(/\/api$/, "");
 
 //     const load = async () => {
@@ -350,7 +350,7 @@ const MainHappinessCards = () => {
 
   /* ---------- LOAD DATA ---------- */
   useEffect(() => {
-    const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    const apiBase = import.meta.env.VITE_API_URL || "https://terradinenwine.com/api";
     const origin = apiBase.replace(/\/api$/, "");
 
     fetch(`${apiBase}/happycard`)

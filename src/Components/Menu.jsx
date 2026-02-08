@@ -39,7 +39,7 @@
 //   /* ---------- LOAD MENU (BACKEND UNTOUCHED) ---------- */
 //   useEffect(() => {
 //     const API =
-//       (import.meta.env.VITE_API_URL || "http://localhost:5000/api") + "/menu";
+//       (import.meta.env.VITE_API_URL || "https://terradinenwine.com/api") + "/menu";
 
 //     fetch(API)
 //       .then((r) => r.json())
@@ -129,7 +129,7 @@
 //                       src={
 //                         item.image_url?.startsWith("/uploads")
 //                           ? (import.meta.env.VITE_API_URL?.replace("/api", "") ||
-//                               "http://localhost:5000") + item.image_url
+//                               "https://terradinenwine.com") + item.image_url
 //                           : item.image_url
 //                       }
 //                       alt={item.name}
@@ -208,7 +208,7 @@ const Menu = () => {
   /* ---------- LOAD MENU (BACKEND UNTOUCHED) ---------- */
   useEffect(() => {
     const API =
-      (import.meta.env.VITE_API_URL || "http://localhost:5000/api") + "/menu";
+      (import.meta.env.VITE_API_URL || "https://terradinenwine.com/api") + "/menu";
 
     fetch(API)
       .then((r) => r.json())
@@ -298,7 +298,7 @@ const Menu = () => {
                       src={
                         item.image_url?.startsWith("/uploads")
                           ? (import.meta.env.VITE_API_URL?.replace("/api", "") ||
-                              "http://localhost:5000") + item.image_url
+                              "https://terradinenwine.com") + item.image_url
                           : item.image_url
                       }
                       alt={item.name}

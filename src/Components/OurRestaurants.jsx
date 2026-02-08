@@ -45,11 +45,11 @@ const OurRestaurants = () => {
   /* ---------- LOAD DATA (UNCHANGED) ---------- */
   useEffect(() => {
     const API =
-      (import.meta.env.VITE_API_URL || "http://localhost:5000/api") +
+      (import.meta.env.VITE_API_URL || "https://terradinenwine.com/api") +
       "/restaurant";
     const origin =
       import.meta.env.VITE_API_URL?.replace("/api", "") ||
-      "http://localhost:5000";
+      "https://terradinenwine.com";
 
     fetch(API)
       .then((r) => r.json())

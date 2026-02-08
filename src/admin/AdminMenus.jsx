@@ -198,7 +198,7 @@ export default function AdminMenus() {
                             src={
                               menu.image_url.startsWith("/uploads")
                                 ? (import.meta.env.VITE_API_URL?.replace("/api", "") ||
-                                    "http://localhost:5000") + menu.image_url
+                                    "https://terradinenwine.com") + menu.image_url
                                 : menu.image_url
                             }
                             alt={menu.name}
@@ -296,7 +296,7 @@ export default function AdminMenus() {
                         src={
                           form.image_url.startsWith("/uploads")
                             ? (import.meta.env.VITE_API_URL?.replace("/api", "") ||
-                                "http://localhost:5000") + form.image_url
+                                "https://terradinenwine.com") + form.image_url
                             : form.image_url
                         }
                         alt="Current"

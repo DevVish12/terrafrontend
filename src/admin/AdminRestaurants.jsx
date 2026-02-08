@@ -189,7 +189,7 @@ export default function AdminRestaurants() {
                             src={
                               r.images[0].image_url.startsWith("/uploads")
                                 ? (import.meta.env.VITE_API_URL?.replace("/api", "") ||
-                                    "http://localhost:5000") + r.images[0].image_url
+                                    "https://terradinenwine.com") + r.images[0].image_url
                                 : r.images[0].image_url
                             }
                             alt={r.name}
@@ -325,7 +325,7 @@ export default function AdminRestaurants() {
                             src={
                               img.image_url?.startsWith("/uploads")
                                 ? (import.meta.env.VITE_API_URL?.replace("/api", "") ||
-                                    "http://localhost:5000") + img.image_url
+                                    "https://terradinenwine.com") + img.image_url
                                 : img.image_url
                             }
                             alt="Current"
