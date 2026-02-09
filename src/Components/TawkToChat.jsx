@@ -37,9 +37,16 @@ function ensureTawkStyles() {
   // Values are intentionally conservative and responsive.
   style.textContent = `
 :root {
-  --tawk-offset-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  /* Mobile bottom nav is ~64px tall; add extra clearance for the bubble */
+  --tawk-offset-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
   --tawk-offset-right: 16px;
   --tawk-scale: 0.92;
+}
+
+@media (max-width: 380px) {
+  :root {
+    --tawk-offset-bottom: calc(128px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 @media (min-width: 768px) {
@@ -52,7 +59,11 @@ function ensureTawkStyles() {
 
 /* Common Tawk containers across themes */
 #tawkchat-container,
-.tawk-min-container {
+.tawk-min-container,
+.tawk-widget-container,
+.tawk-button-container,
+iframe[title*="tawk" i],
+iframe[src*="tawk.to" i] {
   bottom: var(--tawk-offset-bottom) !important;
   right: var(--tawk-offset-right) !important;
   transform: scale(var(--tawk-scale)) !important;
