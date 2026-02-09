@@ -322,12 +322,36 @@ import Footer from "../Components/Footer";
 import useScrollToTop from "../hooks/useScrollToTop";
 
 /* ---------- SMART IMAGE ---------- */
+// const SmartImage = ({ src, alt = "" }) => {
+//   const webpSrc = src?.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+
+//   return (
+//     <picture>
+//       <source srcSet={webpSrc} type="image/webp" />
+//       <img
+//         src={src}
+//         alt={alt}
+//         loading="lazy"
+//         decoding="async"
+//         className="w-full h-full object-cover"
+//       />
+//     </picture>
+//   );
+// };
 const SmartImage = ({ src, alt = "" }) => {
-  const webpSrc = src?.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+  if (!src) return null;
+
+  const isWebp = src.toLowerCase().endsWith(".webp");
 
   return (
     <picture>
-      <source srcSet={webpSrc} type="image/webp" />
+      {/* Only use webp source if backend actually provides jpg/png */}
+      {!isWebp && (
+        <source
+          srcSet={src.replace(/\.(jpg|jpeg|png)$/i, ".webp")}
+          type="image/webp"
+        />
+      )}
       <img
         src={src}
         alt={alt}
