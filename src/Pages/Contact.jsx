@@ -275,23 +275,23 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <a
-              href="https://www.instagram.com/terradinenwine_/?hl=en"
+              href="https://www.instagram.com/terradinenwine_/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-orange-600 hover:underline font-semibold"
             >
               Instagram
             </a>
-            <a
+            {/* <a
               href="https://magicpin.in/Pune/Lohegaon/Restaurant/Terra-Dine-N-Wine/store/1733004/?srsltid=AfmBOor5vOgyyUpZ4xyDMB9DKPvctYUmH4aDO2U3QOfs0Pj3lijmBa1Z"
               target="_blank"
               rel="noopener noreferrer"
               className="text-orange-600 hover:underline font-semibold"
             >
               Magicpin
-            </a>
+            </a> */}
             <a
-              href="https://www.facebook.com/61560369098811/photos/"
+              href="https://www.facebook.com/p/Terra-Dine-n-Wine-61560369098811"
               target="_blank"
               rel="noopener noreferrer"
               className="text-orange-600 hover:underline font-semibold"
