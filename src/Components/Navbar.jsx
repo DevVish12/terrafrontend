@@ -281,33 +281,41 @@ const Navbar = () => {
       {/* ================= SIDE DRAWER ================= */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-black/40">
-          <div className="absolute right-0 top-0 h-full w-[85vw] max-w-sm bg-white shadow-2xl">
-            <div className="flex items-center justify-between p-5 border-b">
+          <div className="absolute inset-y-0 right-0 h-full w-full sm:w-[85vw] sm:max-w-sm bg-white shadow-2xl flex flex-col">
+            <div className="flex items-center justify-between p-5 border-b shrink-0">
               <img src="/logo.png" alt="Logo" className="h-12" />
               <button onClick={() => setIsMenuOpen(false)}>
                 <X className="w-6 h-6 text-gray-700" />
               </button>
             </div>
 
-            <div className="p-6 space-y-6 font-['Poppins']">
-              {menuItems.map((item, idx) => (
-                <Link
-                  key={idx}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block text-gray-700 text-lg font-medium hover:text-[#6B3E2E]"
-                >
-                  {item.label}
-                </Link>
-              ))}
+            <div className="p-6 font-['Poppins'] overflow-y-auto flex-1">
+              <div className="space-y-2">
+                {menuItems.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block rounded-xl px-4 py-3 text-base font-medium transition
+                      ${
+                        isActive(item.href)
+                          ? "bg-[#FBF7F2] text-[#6B3E2E]"
+                          : "text-gray-700 hover:bg-[#FBF7F2] hover:text-[#6B3E2E]"
+                      }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
+            <div className="p-6 pt-4 border-t shrink-0">
               <button
                 onClick={() => {
                   openReservation({ restaurantName: "TERRA DINE N WINE" });
                   setIsMenuOpen(false);
                 }}
-                className="w-full mt-4 py-3 rounded-full bg-[#6B3E2E]
-                text-white font-semibold hover:bg-[#5FAF4E]"
+                className="w-full py-3 rounded-full bg-[#6B3E2E] text-white font-semibold hover:bg-[#5FAF4E]"
               >
                 Reserve Table
               </button>
@@ -317,6 +325,7 @@ const Navbar = () => {
       )}
 
       {/* ================= MOBILE BOTTOM NAV ================= */}
+      {/*
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t z-40">
         <div className="grid grid-cols-4">
           {bottomBarItems.map((item, idx) => {
@@ -357,8 +366,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* SPACER FOR MOBILE */}
       <div className="md:hidden h-16" />
+      */}
     </>
   );
 };
