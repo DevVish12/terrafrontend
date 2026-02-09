@@ -496,9 +496,9 @@ const MainHappinessCards = () => {
 
       {/* ---------- VIEW MODAL (SAME LOGIC) ---------- */}
       {selectedCard && (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4">
-          <div className="bg-white rounded-2xl w-full max-w-3xl overflow-hidden">
-            <div className="relative h-64">
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-start sm:items-center justify-center px-4 py-6 overflow-y-auto">
+          <div className="bg-white rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[85vh]">
+            <div className="relative h-44 sm:h-64 shrink-0">
               <img
                 src={selectedCard.image}
                 alt={selectedCard.title}
@@ -512,7 +512,7 @@ const MainHappinessCards = () => {
               </button>
             </div>
 
-            <div className="p-6">
+            <div className="p-6 flex-1 min-h-0 overflow-y-auto">
               <h3 className="font-['Playfair_Display'] text-2xl text-[#6B3E2E] mb-2">
                 {selectedCard.title}
               </h3>
@@ -551,8 +551,8 @@ const MainHappinessCards = () => {
 
       {/* ---------- RESERVE MODAL (UNCHANGED LOGIC) ---------- */}
       {reserveCard && (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4">
-          <div className="bg-white rounded-2xl w-full max-w-md p-6">
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-start sm:items-center justify-center px-4 py-6 overflow-y-auto">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 max-h-[85vh] overflow-y-auto">
             <h3 className="text-xl font-semibold mb-4">
               Reserve {reserveCard.title}
             </h3>

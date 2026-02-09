@@ -251,15 +251,15 @@ const HappyCards = () => {
       {/* 👉 Your existing selectedCard & reserveCard modals remain SAME */}
       
  {selectedCard && (
-  <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
-    <div className="bg-white rounded-3xl w-full max-w-3xl overflow-hidden shadow-2xl animate-fadeIn">
+  <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start sm:items-center justify-center px-4 py-6 overflow-y-auto">
+    <div className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl animate-fadeIn flex flex-col max-h-[85vh]">
       
       {/* IMAGE */}
-      <div className="relative h-64 sm:h-80">
+      <div className="relative h-44 sm:h-64 shrink-0">
         <img
           src={selectedCard.image}
           alt={selectedCard.title}
-          className="w-full h-full object-fit"
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <button
@@ -271,7 +271,7 @@ const HappyCards = () => {
       </div>
 
       {/* CONTENT */}
-      <div className="p-6 sm:p-8">
+      <div className="p-6 sm:p-8 flex-1 min-h-0 overflow-y-auto">
         <h3 className="font-['Playfair_Display'] text-2xl sm:text-3xl text-[#6B3E2E] mb-3">
           {selectedCard.title}
         </h3>
@@ -320,8 +320,8 @@ const HappyCards = () => {
   </div>
 )}
 {reserveCard && (
-  <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
-    <div className="bg-white rounded-3xl w-full max-w-md p-6 sm:p-8 shadow-2xl animate-fadeIn">
+  <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start sm:items-center justify-center px-4 py-6 overflow-y-auto">
+    <div className="bg-white rounded-3xl w-full max-w-md p-6 sm:p-8 shadow-2xl animate-fadeIn max-h-[85vh] overflow-y-auto">
 
       <h3 className="font-['Playfair_Display'] text-2xl text-[#6B3E2E] mb-4 text-center">
         Reserve Happiness Card
