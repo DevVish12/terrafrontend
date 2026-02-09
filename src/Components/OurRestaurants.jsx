@@ -14,20 +14,25 @@ const AutoScroll = ({ children }) => {
 
     let pos = 0;
     const speed = 0.25; // smooth & premium
+    let raf;
 
     const loop = () => {
       pos += speed;
-      if (pos >= el.scrollWidth / 2) pos = 0;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      if (maxScroll > 0 && pos >= maxScroll) pos = 0;
       el.scrollLeft = pos;
-      requestAnimationFrame(loop);
+      raf = requestAnimationFrame(loop);
     };
 
-    loop();
+    raf = requestAnimationFrame(loop);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
     <div ref={ref} className="overflow-x-hidden">
-      <div className="flex gap-8 w-max">{children}{children}</div>
+      <div className="flex gap-8 w-max">{children}</div>
     </div>
   );
 };
@@ -108,7 +113,7 @@ const OurRestaurants = () => {
                   <img
                     src={r.image}
                     alt={r.name}
-                    className="w-full h-full object-fit
+                    className="w-full h-full object-cover
                     group-hover:scale-110 transition-transform duration-700"
                   />
 
