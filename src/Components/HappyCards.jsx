@@ -24,27 +24,56 @@ import { Link } from "react-router-dom";
 //   );
 // };
 const SmartImage = ({ src, alt = "" }) => {
-  if (!src) return null;
+  const [resolvedSrc, setResolvedSrc] = useState(src || "");
 
-  const isWebp = src.toLowerCase().endsWith(".webp");
+  useEffect(() => {
+    if (!src) {
+      setResolvedSrc("");
+      return;
+    }
+
+    setResolvedSrc(src);
+
+    // If the backend already returns webp, just use it.
+    const isAlreadyWebp = /\.webp(\?.*)?$/i.test(src);
+    if (isAlreadyWebp) return;
+
+    // Try a .webp sibling only when the filename ends with jpg/png.
+    const webpCandidate = src.replace(
+      /\.(jpe?g|png)(\?.*)?$/i,
+      ".webp$2"
+    );
+    if (webpCandidate === src) return;
+
+    // On some hosts the .webp variant doesn't exist after deploy.
+    // Preload the candidate; if it fails, keep the original src.
+    const probe = new Image();
+    probe.onload = () => setResolvedSrc(webpCandidate);
+    probe.onerror = () => setResolvedSrc(src);
+    probe.src = webpCandidate;
+
+    return () => {
+      probe.onload = null;
+      probe.onerror = null;
+    };
+  }, [src]);
+
+  if (!resolvedSrc) return null;
 
   return (
-    <picture>
-      {/* Only use webp source if backend actually provides jpg/png */}
-      {!isWebp && (
-        <source
-          srcSet={src.replace(/\.(jpg|jpeg|png)$/i, ".webp")}
-          type="image/webp"
-        />
-      )}
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        className="w-full h-full object-cover"
-      />
-    </picture>
+    <img
+      src={resolvedSrc}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className="w-full h-full object-cover"
+      onError={(e) => {
+        // Safety: if the chosen src fails (e.g., cached bad webp), fall back.
+        if (src && e.currentTarget.src !== src) {
+          e.currentTarget.src = src;
+        }
+      }}
+    />
   );
 };
 
